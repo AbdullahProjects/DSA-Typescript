@@ -1,3 +1,6 @@
+/**
+ * Internal node for the Stack. Holds a value and a reference to the next node.
+ */
 class StackNode<T> {
   value: T;
   next: StackNode<T> | null;
@@ -8,10 +11,12 @@ class StackNode<T> {
   }
 }
 
+// Stack implementation
 class Stack<T> {
   private top: StackNode<T> | null = null;
   private size: number = 0;
 
+  /** Adds a new element on top of the stack. */
   push(value: T): void {
     const newStackNode = new StackNode(value);
     newStackNode.next = this.top;
@@ -19,6 +24,7 @@ class Stack<T> {
     this.size++;
   }
 
+  /** Removes and returns the top element. Returns null if empty. */
   pop(): T | null {
     if (this.isEmpty()) {
       console.log("Stack is Empty!");
@@ -31,14 +37,17 @@ class Stack<T> {
     return poppedValue;
   }
 
+  /** Returns true if the stack has no elements. */
   isEmpty(): boolean {
     return this.size === 0;
   }
 
+  /** Returns the number of elements in the stack. */
   getSize(): number {
     return this.size;
   }
 
+  /** Logs the stack elements to the console (top → bottom). */
   printStack() {
     let current = this.top;
     let stackValues = [];

@@ -1,3 +1,6 @@
+/**
+ * Internal node for the Queue. Holds a value and a reference to the next node.
+ */
 class QueueNode<T> {
   value: T;
   next: QueueNode<T> | null;
@@ -8,11 +11,13 @@ class QueueNode<T> {
   }
 }
 
+// Queue implementation
 class Queue<T> {
   private front: QueueNode<T> | null = null;
   private rear: QueueNode<T> | null = null;
   private size: number = 0;
 
+  /** Adds an element to the end of the queue. */
   enqueue(value: T) {
     const newQueueNode = new QueueNode(value);
 
@@ -26,6 +31,7 @@ class Queue<T> {
     this.size++;
   }
 
+  /** Removes and returns the first element. Returns null if empty. */
   dequeue(): T | null {
     if (this.isEmpty()) return null;
 
@@ -38,6 +44,7 @@ class Queue<T> {
     return removedNode!.value;
   }
 
+  /** Returns the first element without removing it. Returns null if empty. */
   peek(): T | null {
     if (this.isEmpty()) {
       return null;
@@ -45,20 +52,24 @@ class Queue<T> {
     return this.front!.value;
   }
 
+  /** Returns true if the queue has no elements. */
   isEmpty() {
     return this.size === 0;
   }
 
+  /** Returns the number of elements in the queue. */
   getSize() {
     return this.size;
   }
 
+  /** Removes all elements from the queue. */
   clear() {
     this.front = null;
     this.rear = null;
     this.size = 0;
   }
 
+  /** Logs the queue elements to the console (front → rear). */
   print() {
     let current = this.front;
     const elements = [];

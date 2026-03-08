@@ -1,3 +1,6 @@
+/**
+ * A node in a singly linked list. Holds a value and a reference to the next node.
+ */
 class SinglyNode<T> {
   value: T;
   next: SinglyNode<T> | null;
@@ -8,16 +11,19 @@ class SinglyNode<T> {
   }
 }
 
+// Linked List implementation
 class SinglyLinkedList<T> {
   private head: SinglyNode<T> | null = null;
 
   // ---------------- Insertion --------------------
+  /** Inserts a new node at the beginning of the list. */
   insertAtHead(value: T): void {
     const newNode = new SinglyNode(value);
     newNode.next = this.head;
     this.head = newNode;
   }
 
+  /** Inserts a new node at the end of the list. */
   insertAtTail(value: T): void {
     const newNode = new SinglyNode(value);
 
@@ -34,6 +40,7 @@ class SinglyLinkedList<T> {
     current.next = newNode;
   }
 
+  /** Inserts a new node right after the first node with the given value. */
   insertAfter(value: T, { insertAfter }: { insertAfter: T }): void {
     const newNode = new SinglyNode(value);
 
@@ -58,6 +65,7 @@ class SinglyLinkedList<T> {
   }
 
   // ---------------- Updation --------------------
+  /** Updates the first node with oldValue to newValue. Returns true if found. */
   updateNode(oldValue: T, newValue: T): boolean {
     let current = this.head;
     while (current) {
@@ -70,6 +78,7 @@ class SinglyLinkedList<T> {
     return false;
   }
 
+  /** Updates the value at the given index. Returns true if index is valid. */
   updateAtIndex(index: number, value: T): boolean {
     if (index < 0) return false;
 
@@ -88,6 +97,7 @@ class SinglyLinkedList<T> {
   }
 
   // ---------------- Deletion --------------------
+  /** Removes and returns the first node's value. Returns null if empty. */
   deleteAtHead(): T | null {
     if (!this.head) return null;
 
@@ -96,6 +106,7 @@ class SinglyLinkedList<T> {
     return deletedValue;
   }
 
+  /** Removes and returns the last node's value. Returns null if empty. */
   deleteAtTail(): T | null {
     if (!this.head) return null;
 
@@ -117,6 +128,7 @@ class SinglyLinkedList<T> {
     return deletedValue;
   }
 
+  /** Removes the first node with the given value. Returns true if found. */
   deleteNode(value: T): boolean {
     if (!this.head) return false;
 
@@ -137,6 +149,7 @@ class SinglyLinkedList<T> {
     return false;
   }
 
+  /** Removes and returns the value at the given index. Returns null if invalid. */
   deleteAtIndex(index: number): T | null {
     if (index < 0 || !this.head) return null;
 
@@ -161,6 +174,7 @@ class SinglyLinkedList<T> {
   }
 
   // ---------------- Traversal --------------------
+  /** Logs all list values to the console (head → tail). */
   traverseLinkedList() {
     let tempNode = this.head;
     const result: T[] = [];
@@ -172,6 +186,7 @@ class SinglyLinkedList<T> {
   }
 
   // ---------------- Searching --------------------
+  /** Logs the index of the first node with the given value, or "Node not found!". */
   searchNode(value: T): void {
     let currentNodeIndex = 0;
     let current = this.head;
