@@ -1,6 +1,6 @@
-class NodePoint<T> {
+class StackNode<T> {
   value: T;
-  next: NodePoint<T> | null;
+  next: StackNode<T> | null;
 
   constructor(value: T) {
     this.value = value;
@@ -9,13 +9,13 @@ class NodePoint<T> {
 }
 
 class Stack<T> {
-  private top: NodePoint<T> | null = null;
+  private top: StackNode<T> | null = null;
   private size: number = 0;
 
   push(value: T): void {
-    const newNodePoint = new NodePoint(value);
-    newNodePoint.next = this.top;
-    this.top = newNodePoint;
+    const newStackNode = new StackNode(value);
+    newStackNode.next = this.top;
+    this.top = newStackNode;
     this.size++;
   }
 
