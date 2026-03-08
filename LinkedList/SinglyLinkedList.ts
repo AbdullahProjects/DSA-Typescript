@@ -43,7 +43,7 @@ class SinglyLinkedList<T> {
 
     let current: SinglyNode<T> | null = this.head;
     while (current) {
-      if (current.value == insertAfter) {
+      if (current.value === insertAfter) {
         if (!current.next) {
           this.insertAtTail(value);
           return;
@@ -58,8 +58,107 @@ class SinglyLinkedList<T> {
   }
 
   // ---------------- Updation --------------------
+  updateNode(oldValue: T, newValue: T): boolean {
+    let current = this.head;
+    while (current) {
+      if (current.value === oldValue) {
+        current.value = newValue;
+        return true;
+      }
+      current = current.next;
+    }
+    return false;
+  }
+
+  updateAtIndex(index: number, value: T): boolean {
+    if (index < 0) return false;
+
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (current) {
+      if (currentIndex === index) {
+        current.value = value;
+        return true;
+      }
+      current = current.next;
+      currentIndex++;
+    }
+    return false;
+  }
 
   // ---------------- Deletion --------------------
+  deleteAtHead(): T | null {
+    if (!this.head) return null;
+
+    const deletedValue = this.head.value;
+    this.head = this.head.next;
+    return deletedValue;
+  }
+
+  deleteAtTail(): T | null {
+    if (!this.head) return null;
+
+    // If only one node
+    if (!this.head.next) {
+      const deletedValue = this.head.value;
+      this.head = null;
+      return deletedValue;
+    }
+
+    // Traverse to second-to-last node
+    let current = this.head;
+    while (current.next && current.next.next) {
+      current = current.next;
+    }
+
+    const deletedValue = current.next!.value;
+    current.next = null;
+    return deletedValue;
+  }
+
+  deleteNode(value: T): boolean {
+    if (!this.head) return false;
+
+    // If head needs to be deleted
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      return true;
+    }
+
+    let current = this.head;
+    while (current.next) {
+      if (current.next.value === value) {
+        current.next = current.next.next;
+        return true;
+      }
+      current = current.next;
+    }
+    return false;
+  }
+
+  deleteAtIndex(index: number): T | null {
+    if (index < 0 || !this.head) return null;
+
+    // Delete head
+    if (index === 0) {
+      return this.deleteAtHead();
+    }
+
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (current.next) {
+      if (currentIndex === index - 1) {
+        const deletedValue = current.next.value;
+        current.next = current.next.next;
+        return deletedValue;
+      }
+      current = current.next;
+      currentIndex++;
+    }
+    return null;
+  }
 
   // ---------------- Traversal --------------------
   traverseLinkedList() {
