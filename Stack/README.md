@@ -7,7 +7,11 @@ A Stack is a linear data structure that follows a particular order in which the 
 Basic operations we can do on a stack are:
 
 **Push**: Adds a new element on the top of stack.
+
 **Pop**: Removes and returns the top element from the stack.
+
 **Peek**: Returns the top element on the stack.
+
 **isEmpty**: Checks if the stack is empty.
+
 **Size**: Finds the number of elements in the stack.
