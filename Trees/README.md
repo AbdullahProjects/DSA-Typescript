@@ -15,13 +15,13 @@ A tree is a **hierarchical** data structure used to organize and represent data 
 
 - **Parent Node** : A node that has one or more child nodes directly connected below it.
 
-- **Child Node** : A node that has a parent node directly connected above it.
+- **Child Node** : A node that has a parent node directly connected above it. Two types of child: Left child and Right child.
 
 - **Root Node** : The topmost node of a tree that has no parent. Every tree has exactly one root.
 
 - **Leaf Node** : A node that has no children. Also called an **external node** or **terminal node**.
 
-- **Internal Node** : A node that has at least one child (i.e., any node that is not a leaf node).
+- **Internal Node** : A node that has at least one child (i.e., any node that is not a leaf node, root node can be considered internal node if it has atleast one child).
 
 - **Sibling** : Nodes that share the same parent node.
 
@@ -31,13 +31,13 @@ A tree is a **hierarchical** data structure used to organize and represent data 
 
 - **Level of a Node** : The distance of a node from the root, measured in edges. The root is at level 0 (or level 1, depending on convention).
 
+- **Subtree** : A node and all of its descendants. Every node in a tree is the root of its own subtree. Left subtree or Right subtree.
+
 - **Height of Tree**: The tree height is the maximum number of edges from the root node to a leaf node.
 
 - **Tree Size**: Total number of nodes in whole tree.
 
 - **Neighbor of a Node** : The parent or any direct child of that node — i.e., nodes directly connected by a single edge.
-
-- **Subtree** : A node and all of its descendants. Every node in a tree is the root of its own subtree.
 
 - **Edge**: The link connecting two nodes.
 
